@@ -1,20 +1,64 @@
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-import { BrowserRouter as Router, Switch } from 'react-router-dom'
-import IndexRoute from 'routes/IndexRoute'
+import { useCallback, useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { getMe, setLoggedIn } from "store/modules/auth/actions";
+import routes from "routes";
 
-function App() {
+import Layout from "components/main/Layout";
+import RouterGuard from "components/main/RouterGuard";
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchUser: () => dispatch(getMe()),
+  setLoggedIn: (value) => dispatch(setLoggedIn(value)),
+});
+
+function App({ fetchUser, setLoggedIn }) {
+  const [appReady, setAppReady] = useState(false);
+
+  const checkAuthUser = useCallback(async () => {
+    try {
+      await fetchUser();
+
+      setLoggedIn(true);
+    } catch (err) {
+      setLoggedIn(false);
+    } finally {
+      setAppReady(true);
+    }
+  }, [fetchUser, setLoggedIn]);
+
+  // Fedding the store.
+  useEffect(() => {
+    checkAuthUser();
+  }, [checkAuthUser]);
+
+  if (!appReady) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <Router>
-      <div className="App">
-        {/* Router */}
-        <Switch>
-          <IndexRoute />
-        </Switch>
+      <div className='App'>
+        <Layout>
+          <Switch>
+            {routes.map((route, i) => (
+              <Route key={i} path={route.path} exact={route.exact}>
+                <RouterGuard
+                  layout={route.layout || "default"}
+                  middleware={route.middleware || []}
+                >
+                  <route.component></route.component>
+                </RouterGuard>
+              </Route>
+            ))}
+          </Switch>
+        </Layout>
       </div>
     </Router>
-  )
+  );
 }
 
-export default App;
+export default connect(null, mapDispatchToProps)(App);
