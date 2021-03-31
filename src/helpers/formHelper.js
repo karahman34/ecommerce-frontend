@@ -1,5 +1,5 @@
 export function getValidationErrors(err) {
-  return err.response.data.errors;
+  return err.response.data.data;
 }
 
 export function getValidationErrorsObject(err) {
