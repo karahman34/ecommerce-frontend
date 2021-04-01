@@ -45,6 +45,12 @@ const Index = ({ goLogin }) => {
 
     try {
       await goLogin(form);
+
+      const params = new URLSearchParams(window.location.search);
+
+      if (params.has("origin")) {
+        window.location.href = decodeURI(params.get("origin"));
+      }
     } catch (err) {
       const errCode = err?.response?.status;
 
