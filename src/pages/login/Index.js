@@ -38,6 +38,7 @@ const Index = ({ goLogin }) => {
   const formSubmitHandler = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setFatalError(false);
     setErrors({
       email: null,
       password: null,

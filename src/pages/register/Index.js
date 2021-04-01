@@ -41,6 +41,7 @@ const Index = ({ goRegister }) => {
   const formSubmitHandler = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setFatalError(false);
     setErrors({
       name: null,
       email: null,
