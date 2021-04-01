@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 
 import authMiddleware from "middlewares/authMiddleware";
 import guestMiddleware from "middlewares/guestMiddleware";
+import { setDocumentTitle } from "helpers/routeHelper";
 
 const mapStateToProps = (state) => ({
   currentLayout: state.global.currentLayout,
@@ -27,6 +28,7 @@ const RouterGuard = ({
   changeCurrentLayout,
   layout,
   middleware,
+  title,
   state,
 }) => {
   const [renderRoute, setRenderRoute] = useState(false);
@@ -76,10 +78,18 @@ const RouterGuard = ({
     }
   }, [layout, currentLayout, changeCurrentLayout]);
 
+  // Set route title.
+  useEffect(() => {
+    if (renderRoute === true) {
+      setDocumentTitle(title);
+    }
+  }, [renderRoute, title]);
+
   return renderRoute ? children : null;
 };
 
 RouterGuard.propTypes = {
+  title: PropTypes.string,
   layout: PropTypes.string.isRequired,
   middleware: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
 };

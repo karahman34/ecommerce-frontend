@@ -12,16 +12,18 @@ const routes = [
   {
     path: "/login",
     exact: false,
-    component: LoginPage,
     layout: "auth",
+    title: "Login",
     middleware: "guest",
+    component: LoginPage,
   },
   {
     path: "/register",
     exact: false,
-    component: RegisterPage,
     layout: "auth",
+    title: "Register",
     middleware: "guest",
+    component: RegisterPage,
   },
 ];
 
