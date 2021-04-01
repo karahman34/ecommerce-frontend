@@ -78,6 +78,7 @@ const Index = ({ goLogin }) => {
                 type='email'
                 placeholder='Enter Email...'
                 isInvalid={errors.email}
+                tabIndex='1'
                 onChange={(e) => setField("email", e.target.value)}
               ></Form.Control>
               <Form.Control.Feedback type='invalid'>
@@ -87,11 +88,16 @@ const Index = ({ goLogin }) => {
 
             {/* Password */}
             <Form.Group controlId='password'>
-              <Form.Label>Password</Form.Label>
+              <div className='d-flex align-items-center justify-content-between'>
+                <Form.Label>Password</Form.Label>
+                <Link to='/forgot-password'>Forgot Password ?</Link>
+              </div>
+
               <Form.Control
                 type='password'
                 placeholder='Enter Password...'
                 isInvalid={errors.password}
+                tabIndex='2'
                 onChange={(e) => setField("password", e.target.value)}
               ></Form.Control>
               <Form.Control.Feedback type='invalid'>
@@ -102,7 +108,12 @@ const Index = ({ goLogin }) => {
             <div className='d-flex justify-content-between align-items-center'>
               <Link to='/register'>Don't have an account ?</Link>
 
-              <Button type='submit' variant='primary' disabled={loading}>
+              <Button
+                type='submit'
+                variant='primary'
+                disabled={loading}
+                tabIndex='3'
+              >
                 {!loading ? "Login" : "Loading..."}
               </Button>
             </div>
