@@ -15,3 +15,7 @@ export function getValidationErrorsObject(err) {
 
   return errorsObj;
 }
+
+export function getErrorCode(err) {
+  return err?.response?.status;
+}
