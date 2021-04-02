@@ -1,15 +1,15 @@
-import "./AuthLayout.scss";
 import { useState } from "react";
 import { Container } from "react-bootstrap";
-import Header from "./Header";
-import Footer from "./Footer";
+import AuthLayoutStyles from "./AuthLayout.module.scss";
+import Header from "./Header/Header";
+import Footer from "./Footer/Footer";
 
 const AuthLayout = ({ children }) => {
   const [appTitle] = useState(process.env.REACT_APP_TITLE);
 
   return (
-    <div id='auth-layout'>
-      <Container>
+    <div className={AuthLayoutStyles["auth-layout"]}>
+      <Container className={AuthLayoutStyles.container}>
         <Header appTitle={appTitle} />
 
         {children}

@@ -2,8 +2,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Card, Form } from "react-bootstrap";
 import { getErrorCode, getValidationErrorsObject } from "helpers/formHelper";
-import Alert from "components/Alert/Alert";
 import authApi from "api/authApi";
+import Alert from "components/Alert/Alert";
+import AuthLayoutStyles from "components/layouts/auth/AuthLayout.module.scss";
 
 const Index = () => {
   const params = new URLSearchParams(window.location.search);
@@ -66,7 +67,7 @@ const Index = () => {
   };
 
   return (
-    <div id='reset-password-page' className='page'>
+    <div id='reset-password-page' className={AuthLayoutStyles.page}>
       {success && <Alert variant='success'>{success}</Alert>}
       {fatalError && <Alert variant='danger'>{fatalError}</Alert>}
 

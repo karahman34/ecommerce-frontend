@@ -2,8 +2,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Card, Form } from "react-bootstrap";
 import { getValidationErrorsObject } from "helpers/formHelper";
-import Alert from "components/Alert/Alert";
 import authApi from "api/authApi";
+import Alert from "components/Alert/Alert";
+import AuthLayoutStyles from "components/layouts/auth/AuthLayout.module.scss";
 
 const Index = () => {
   const [form, setForm] = useState({
@@ -55,7 +56,7 @@ const Index = () => {
   };
 
   return (
-    <div id='forgot-password-page' className='page'>
+    <div id='forgot-password-page' className={AuthLayoutStyles.page}>
       {success && <Alert variant='success'>{success}</Alert>}
       {fatalError && <Alert variant='danger'>{fatalError}</Alert>}
 

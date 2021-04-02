@@ -3,8 +3,9 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { register } from "store/modules/auth/actions";
 import { Button, Card, Form } from "react-bootstrap";
-import Alert from "components/Alert/Alert";
 import { getValidationErrorsObject } from "helpers/formHelper";
+import Alert from "components/Alert/Alert";
+import AuthLayoutStyles from "components/layouts/auth/AuthLayout.module.scss";
 
 const mapDispatchToProps = (dispatch) => ({
   goRegister: (payload) => dispatch(register(payload)),
@@ -66,7 +67,7 @@ const Index = ({ goRegister }) => {
   };
 
   return (
-    <div id='register-page' className='page'>
+    <div id='register-page' className={AuthLayoutStyles.page}>
       {fatalError && <Alert variant='danger'>{fatalError}</Alert>}
 
       <Card className='border-0 shadow auth-card'>
