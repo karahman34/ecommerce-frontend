@@ -61,14 +61,16 @@ const RouterGuard = ({
 
   // Apply middleware.
   useEffect(() => {
-    const context = {
-      location,
-      state,
-      params,
-      history,
-    };
+    if (middleware) {
+      const context = {
+        location,
+        state,
+        params,
+        history,
+      };
 
-    applyMiddleware(context, middleware);
+      applyMiddleware(context, middleware);
+    }
   }, [location, state, params, history, middleware, applyMiddleware]);
 
   // Set route layout.

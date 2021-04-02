@@ -51,7 +51,7 @@ function App({ fetchUser, setLoggedIn }) {
                 <RouterGuard
                   title={route.title}
                   layout={route.layout || "default"}
-                  middleware={route.middleware || []}
+                  middleware={route.middleware}
                 >
                   <route.component></route.component>
                 </RouterGuard>
