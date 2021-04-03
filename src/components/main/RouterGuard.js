@@ -31,7 +31,7 @@ const RouterGuard = ({
   title,
   state,
 }) => {
-  const [renderRoute, setRenderRoute] = useState(false);
+  const [tasks, setTasks] = useState(["applyMiddleware"]);
   const history = useHistory();
   const params = useParams();
   const location = useLocation();
@@ -49,7 +49,12 @@ const RouterGuard = ({
         return applyMiddleware(context, listMiddleware);
       }
 
-      setRenderRoute(true);
+      setTasks((prevTasks) => {
+        const newTasks = [...prevTasks];
+        newTasks.splice(newTasks.indexOf("applyMiddleware"), 1);
+
+        return newTasks;
+      });
     };
 
     // Run middleware.
@@ -70,6 +75,13 @@ const RouterGuard = ({
       };
 
       applyMiddleware(context, middleware);
+    } else {
+      setTasks((prevTasks) => {
+        const newTasks = [...prevTasks];
+        newTasks.splice(newTasks.indexOf("applyMiddleware"), 1);
+
+        return newTasks;
+      });
     }
   }, [location, state, params, history, middleware, applyMiddleware]);
 
@@ -82,12 +94,12 @@ const RouterGuard = ({
 
   // Set route title.
   useEffect(() => {
-    if (renderRoute === true) {
+    if (!tasks.length) {
       setDocumentTitle(title);
     }
-  }, [renderRoute, title]);
+  }, [tasks, title]);
 
-  return renderRoute ? children : null;
+  return !tasks.length ? children : null;
 };
 
 RouterGuard.propTypes = {
