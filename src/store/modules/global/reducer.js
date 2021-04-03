@@ -1,5 +1,5 @@
 import globalState from "./state";
-import { SET_LAYOUT } from "./actionTypes";
+import { SET_LAYOUT, SET_POPULAR_CATEGORIES } from "./actionTypes";
 
 const globalReducer = (state = globalState, { type, payload }) => {
   switch (type) {
@@ -7,6 +7,12 @@ const globalReducer = (state = globalState, { type, payload }) => {
       return {
         ...state,
         currentLayout: payload,
+      };
+
+    case SET_POPULAR_CATEGORIES:
+      return {
+        ...state,
+        popularCategories: payload,
       };
 
     default:

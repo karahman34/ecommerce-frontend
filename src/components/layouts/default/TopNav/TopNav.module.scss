@@ -1,0 +1,48 @@
+.topnav {
+  background-color: white !important;
+
+  @media screen and (min-width: 992px) {
+    font-size: 17px;
+    padding-bottom: 5px;
+  }
+
+  .brand {
+    font-size: 25px;
+    font-weight: 600;
+  }
+
+  .link {
+    padding-left: 0.25rem !important;
+    padding-right: 0.25rem !important;
+  }
+
+  .cart {
+    @media screen and (min-width: 992px) {
+      position: relative;
+
+      i {
+        padding: 8px 10px;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+
+        &:hover {
+          background-color: rgb(235, 235, 235);
+        }
+      }
+
+      .badge {
+        position: absolute;
+        top: 0;
+        left: 75%;
+        transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+      }
+    }
+  }
+}

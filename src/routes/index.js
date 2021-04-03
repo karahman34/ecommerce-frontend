@@ -9,7 +9,6 @@ const routes = [
     path: "/",
     exact: true,
     component: IndexPage,
-    middleware: "auth",
   },
   {
     path: "/login",

@@ -1,0 +1,39 @@
+.popularCategories {
+  width: 100%;
+  padding-top: 0;
+  padding-bottom: 0;
+  background-color: white !important;
+
+  .container {
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: darkgrey;
+      border-radius: 20px;
+      -webkit-border-radius: 20px;
+      -moz-border-radius: 20px;
+      -ms-border-radius: 20px;
+      -o-border-radius: 20px;
+    }
+
+    &::-webkit-scrollbar:vertical {
+      display: none;
+    }
+
+    .link {
+      padding: 0 7px 8px !important;
+
+      .category {
+        border-radius: 2.5rem;
+        -webkit-border-radius: 2.5rem;
+        -moz-border-radius: 2.5rem;
+        -ms-border-radius: 2.5rem;
+        -o-border-radius: 2.5rem;
+      }
+    }
+  }
+}

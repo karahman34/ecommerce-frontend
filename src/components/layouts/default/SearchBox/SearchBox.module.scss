@@ -1,0 +1,56 @@
+.searchBox {
+  width: 100%;
+  display: inline-block;
+  position: relative;
+
+  .input {
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    padding: 0.25rem 1rem;
+    padding-right: 30px;
+    background-color: rgb(228, 228, 228);
+    transition: border 400ms, background-color 400ms;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    -webkit-transition: border 400ms, background-color 400ms;
+    -moz-transition: border 400ms, background-color 400ms;
+    -ms-transition: border 400ms, background-color 400ms;
+    -o-transition: border 400ms, background-color 400ms;
+
+    &:focus {
+      border: 1px solid #5b8a72;
+      background-color: white;
+    }
+
+    @media screen and (min-width: 992px) {
+      & {
+        border-radius: 12px;
+        -webkit-border-radius: 12px;
+        -moz-border-radius: 12px;
+        -ms-border-radius: 12px;
+        -o-border-radius: 12px;
+      }
+    }
+  }
+
+  .magnify {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+  }
+
+  @media screen and (min-width: 992px) {
+    & {
+      max-width: 300px;
+    }
+  }
+}
