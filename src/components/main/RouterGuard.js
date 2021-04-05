@@ -96,6 +96,8 @@ const RouterGuard = ({
   useEffect(() => {
     if (!tasks.length) {
       setDocumentTitle(title);
+
+      window.scrollTo({ top: 0 });
     }
   }, [tasks, title]);
 
