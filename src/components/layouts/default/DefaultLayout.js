@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
 import DefaultLayoutStyles from "./DefaultLayout.module.scss";
 import TopNav from "./TopNav/TopNav";
+import Footer from "./Footer/Footer";
 import PopularCategories from "./PopularCategories/PopularCategories";
 
 const DefaultLayout = ({ children }) => {
@@ -32,9 +32,9 @@ const DefaultLayout = ({ children }) => {
         <PopularCategories />
       </div>
 
-      <main className='mt-3'>
-        <Container>{children}</Container>
-      </main>
+      <main>{children}</main>
+
+      <Footer />
     </div>
   );
 };

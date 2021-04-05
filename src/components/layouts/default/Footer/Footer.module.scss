@@ -1,0 +1,43 @@
+.footer {
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+
+  .title {
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+
+    @media screen and (min-width: 992px) {
+      margin-bottom: 0.85rem;
+    }
+  }
+
+  .social {
+    i {
+      display: inline-block;
+      color: white;
+      font-size: 30px;
+    }
+
+    &:not(:last-child) {
+      i {
+        margin-right: 0.75rem;
+      }
+    }
+  }
+
+  .list {
+    list-style: none;
+    padding: 0;
+
+    .listItem {
+      margin-bottom: 0.5rem;
+
+      i {
+        margin-right: 0.75rem;
+      }
+    }
+  }
+}
