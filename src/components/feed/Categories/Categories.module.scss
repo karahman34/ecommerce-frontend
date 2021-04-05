@@ -1,0 +1,63 @@
+.categories {
+  background-color: #5b8a72;
+  padding: 1rem 0;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .header {
+      margin-bottom: 0;
+
+      &::after {
+        content: "";
+        display: block;
+        height: 4px;
+        margin-top: 5px;
+        background-color: white;
+      }
+    }
+
+    .searchBox {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      margin-top: 1.25rem;
+      margin-bottom: 0.75rem;
+
+      input {
+        width: 100%;
+        border: none;
+        outline: none;
+        padding: 6px 20px;
+        padding-right: 30px;
+        border-radius: 1.25rem;
+        -webkit-border-radius: 1.25rem;
+        -moz-border-radius: 1.25rem;
+        -ms-border-radius: 1.25rem;
+        -o-border-radius: 1.25rem;
+
+        &:focus ~ i {
+          color: #5b8a72;
+        }
+      }
+
+      i {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+      }
+    }
+
+    .listBlock {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+  }
+}

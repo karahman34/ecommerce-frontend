@@ -1,0 +1,35 @@
+.jumbotron {
+  background-image: url("/assets/images/home_page/pexels-artem-beliaikin-994517.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & * {
+    color: white;
+  }
+
+  & .btn {
+    font-size: 18px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  & h1,
+  & h5 {
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.685);
+  }
+
+  @media screen and (min-width: 992px) {
+    & h1 {
+      font-size: 53px;
+    }
+
+    & h5 {
+      font-size: 23px;
+    }
+  }
+}
