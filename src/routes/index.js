@@ -1,3 +1,5 @@
+import ProductsRoutes from "./products/index";
+
 import IndexPage from "pages/Index";
 import LoginPage from "pages/login/Index";
 import RegisterPage from "pages/register/Index";
@@ -42,6 +44,7 @@ const routes = [
     middleware: "guest",
     component: ResetPasswordPage,
   },
+  ...ProductsRoutes,
 ];
 
 export default routes;

@@ -7,7 +7,10 @@ import { formatToRupiah } from "helpers/moneyHelper";
 
 const ProductFeed = ({ product }) => {
   return (
-    <Link to='#' className={ProductFeedStyles.productFeed}>
+    <Link
+      to={`products/${product.id}`}
+      className={ProductFeedStyles.productFeed}
+    >
       <Card className={`shadow-sm ${ProductFeedStyles.card}`}>
         <Card.Img
           variant='top'

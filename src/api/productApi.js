@@ -8,6 +8,9 @@ const productApi = {
       params,
     });
   },
+  show(productId) {
+    return http.get(`${prefix}/${productId}`);
+  },
   popular(params = null) {
     return http.get(`${prefix}/popular`, {
       params,
@@ -15,6 +18,11 @@ const productApi = {
   },
   random(params = null) {
     return http.get(`${prefix}/random`, {
+      params,
+    });
+  },
+  related(productId, params = null) {
+    return http.get(`${prefix}/${productId}/related`, {
       params,
     });
   },

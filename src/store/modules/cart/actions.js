@@ -30,3 +30,18 @@ export const fetchUserCarts = () => {
     }
   };
 };
+
+export const saveCartItem = (payload) => {
+  return async (dispatch) => {
+    try {
+      const res = await cartApi.store(payload);
+      const { data } = res.data;
+
+      dispatch(addCart(data));
+
+      return Promise.resolve(res);
+    } catch (err) {
+      return Promise.reject(err);
+    }
+  };
+};
