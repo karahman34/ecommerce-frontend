@@ -10,15 +10,18 @@ const FeedTitle = ({ title, to }) => {
       className={`d-flex align-items-center justify-content-between mb-1 ${FeedTitleStyles.feedTitle}`}
     >
       <h3 className='text-primary'>{title}</h3>
-      <Link to={to}>
-        <Button>See More</Button>
-      </Link>
+
+      {to && (
+        <Link to={to}>
+          <Button>See More</Button>
+        </Link>
+      )}
     </div>
   );
 };
 
 FeedTitle.propTypes = {
-  to: PropTypes.string.isRequired,
+  to: PropTypes.string,
   title: PropTypes.string.isRequired,
 };
 
