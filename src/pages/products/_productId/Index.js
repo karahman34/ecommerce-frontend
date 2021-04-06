@@ -6,6 +6,7 @@ import DefaultLayoutStyles from "components/layouts/default/DefaultLayout.module
 import ProductDetails from "components/product/ProductDetails/ProductDetails";
 import ProductDetailsSkeleton from "components/product/ProductDetailsSkeleton/ProductsDetailsSkeleton";
 import RelatedProducts from "components/product/RelatedProducts/RelatedProducts";
+import { setDocumentTitle } from "helpers/routeHelper";
 
 const Index = () => {
   const { productId } = useParams();
@@ -27,6 +28,12 @@ const Index = () => {
   }, [productId]);
 
   useEffect(() => fetchProduct(), [fetchProduct]);
+
+  useEffect(() => {
+    if (product) {
+      setDocumentTitle(product.name);
+    }
+  }, [product]);
 
   return (
     <Container className={DefaultLayoutStyles.page}>
