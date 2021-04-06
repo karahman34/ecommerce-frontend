@@ -8,7 +8,7 @@ import { formatToRupiah } from "helpers/moneyHelper";
 const ProductFeed = ({ product }) => {
   return (
     <Link
-      to={`products/${product.id}`}
+      to={`/products/${product.id}`}
       className={ProductFeedStyles.productFeed}
     >
       <Card className={`shadow-sm ${ProductFeedStyles.card}`}>
