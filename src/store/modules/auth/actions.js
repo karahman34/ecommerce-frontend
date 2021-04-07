@@ -17,7 +17,7 @@ export function authenthicate(payload) {
       await authApi.getCSRF();
       await authApi.login(payload);
 
-      dispatch(getMe());
+      await dispatch(getMe());
       dispatch(setLoggedIn(true));
 
       return Promise.resolve();
@@ -32,7 +32,7 @@ export function register(payload) {
     try {
       await authApi.register(payload);
 
-      dispatch(getMe());
+      await dispatch(getMe());
       dispatch(setLoggedIn(true));
 
       return Promise.resolve();
