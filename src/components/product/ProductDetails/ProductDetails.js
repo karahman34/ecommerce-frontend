@@ -38,14 +38,7 @@ const ProductDetails = ({
     message: null,
   });
 
-  const subTotal = useMemo(() => {
-    if (product !== null) {
-      return product.price * qty;
-    }
-
-    return null;
-  }, [product, qty]);
-
+  const subTotal = useMemo(() => product.price * qty, [product, qty]);
   const productInsideCart = useMemo(() => {
     return findByProductId(product.id);
   }, [findByProductId, product]);
@@ -79,10 +72,12 @@ const ProductDetails = ({
   }
 
   useEffect(() => {
-    if (product !== null) {
-      setThumbnail(product.thumbnail);
-      setPrevThumbnail(product.thumbnail);
-    }
+    setThumbnail(product.thumbnail);
+    setPrevThumbnail(product.thumbnail);
+    setAlert({
+      variant: null,
+      message: null,
+    });
   }, [product]);
 
   useEffect(() => {
