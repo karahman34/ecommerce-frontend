@@ -211,7 +211,7 @@ const ProductDetails = ({
               </div>
 
               <Button
-                className='w-100 font-weight-bold mt-1'
+                className='w-100 font-weight-medium mt-1'
                 disabled={qty < 1 || saveCartLoading || productInsideCart}
                 onClick={saveCartHandler}
               >
