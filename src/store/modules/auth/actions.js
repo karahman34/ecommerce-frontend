@@ -32,6 +32,8 @@ export function register(payload) {
   return async (dispatch) => {
     try {
       await authApi.register(payload);
+
+      dispatch(getMe());
       dispatch(setLoggedIn(true));
 
       return Promise.resolve();
