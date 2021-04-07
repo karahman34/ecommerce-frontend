@@ -1,4 +1,5 @@
 import authApi from "api/authApi";
+import { clearCart } from "../cart/actions";
 import { SET_USER, SET_LOGGED_IN } from "./actionTypes";
 
 export const setUser = (user) => ({
@@ -47,6 +48,7 @@ export function logout() {
 
       dispatch(setUser(null));
       dispatch(setLoggedIn(false));
+      dispatch(clearCart());
 
       return Promise.resolve(res);
     } catch (err) {
