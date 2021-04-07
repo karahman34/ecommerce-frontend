@@ -1,9 +1,11 @@
+@import "/src/assets/scss/variables";
+
 .auth-layout {
   padding: 0;
   margin: 0;
   min-height: 100vh;
   width: 100%;
-  background-color: #f3f4f6;
+  background-color: $bg-color;
 
   & > .container {
     min-height: 100vh;
