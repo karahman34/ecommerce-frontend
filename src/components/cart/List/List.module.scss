@@ -1,0 +1,9 @@
+@import "/src/assets/scss/variables";
+
+.cartList {
+  .cartItem {
+    &:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+  }
+}

@@ -98,12 +98,13 @@ const TopNav = ({
               <>
                 {/* Shopping Cart */}
                 <Nav.Link
-                  href='#'
+                  as={Link}
+                  to='/cart'
                   className={[TopNavStyles.cart, TopNavStyles.link]}
                 >
                   <i className='mdi mdi-cart'></i>
                   <span className='d-lg-none mx-2'>Shopping Cart</span>
-                  {Array.isArray(cartsLength) && (
+                  {cartsLength !== null && cartsLength > 0 && (
                     <Badge
                       pill
                       variant='primary'

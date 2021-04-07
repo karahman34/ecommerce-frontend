@@ -1,0 +1,22 @@
+@import "/src/assets/scss/variables";
+
+.header-title--dash {
+  color: $primary;
+  width: max-content;
+
+  &::after {
+    content: "";
+    display: block;
+    height: 4px;
+    margin-top: 0.15rem;
+    background-color: $primary;
+  }
+
+  &.text-white {
+    color: white !important;
+
+    &::after {
+      background-color: white !important;
+    }
+  }
+}

@@ -1,0 +1,45 @@
+@import "/src/assets/scss/variables";
+
+.qtyInput {
+  display: block;
+  position: relative;
+
+  .minus,
+  .plus {
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    padding: 2px 5px;
+    color: white;
+    border-radius: 50%;
+    background-color: $primary;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+  }
+
+  .minus {
+    left: 0;
+    background-color: rgb(194, 194, 194);
+  }
+
+  .plus {
+    right: 0;
+  }
+
+  .input {
+    outline: none;
+    border: none;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 0.5rem 0;
+    text-align: center;
+  }
+}

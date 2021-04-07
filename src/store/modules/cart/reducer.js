@@ -1,5 +1,13 @@
-import { ADD_CART, REMOVE_CART, SET_CARTS } from "./actionTypes";
+import {
+  ADD_CART,
+  CLEAR_CART,
+  REMOVE_CART,
+  SET_CARTS,
+  UPDATE_CART,
+} from "./actionTypes";
 import cartState from "./state";
+
+let newCartItems = [];
 
 export const findByProductId = (state = cartState) => (productId) =>
   !Array.isArray(state.items)
@@ -20,8 +28,21 @@ const cartReducer = (state = cartState, { type, payload }) => {
         items: [...state.items, payload],
       };
 
+    case UPDATE_CART:
+      newCartItems = [...state.items];
+      newCartItems.splice(
+        newCartItems.findIndex((cart) => cart.id === payload.id),
+        1,
+        payload
+      );
+
+      return {
+        ...state,
+        items: newCartItems,
+      };
+
     case REMOVE_CART:
-      const newCartItems = [...state.items];
+      newCartItems = [...state.items];
       newCartItems.splice(
         newCartItems.findIndex((cart) => cart.id === payload.id),
         1
@@ -30,6 +51,12 @@ const cartReducer = (state = cartState, { type, payload }) => {
       return {
         ...state,
         items: newCartItems,
+      };
+
+    case CLEAR_CART:
+      return {
+        ...state,
+        items: [],
       };
 
     default:

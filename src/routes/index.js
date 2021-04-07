@@ -1,4 +1,5 @@
 import ProductsRoutes from "./products/index";
+import cartIndexRoutes from "./cart";
 
 import IndexPage from "pages/Index";
 import LoginPage from "pages/login/Index";
@@ -45,6 +46,7 @@ const routes = [
     component: ResetPasswordPage,
   },
   ...ProductsRoutes,
+  ...cartIndexRoutes,
 ];
 
 export default routes;

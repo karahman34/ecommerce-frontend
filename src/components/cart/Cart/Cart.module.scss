@@ -1,0 +1,17 @@
+.cart {
+  .thumbnail {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+
+    @media screen and (min-width: 992px) {
+      width: 200px;
+      height: 200px;
+    }
+  }
+}

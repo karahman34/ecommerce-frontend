@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { saveCartItem } from "store/modules/cart/actions";
 import Alert from "components/Alert/Alert";
 import { findByProductId } from "store/modules/cart/reducer";
+import QtyInput from "components/cart/QtyInput/QtyInput";
 
 const mapStateToProps = ({ auth, cart }) => ({
   loggedIn: auth.loggedIn,
@@ -168,34 +169,21 @@ const ProductDetails = ({
         </Col>
 
         <Col xs={12} md={3}>
-          <Card
-            className={`${ProductDetailsStyles.cartCard} border-0 shadow-sm`}
-          >
+          <Card className='border-0 shadow-sm'>
             <Card.Body>
               <h6>Set Stock & Note</h6>
 
-              <Form className={ProductDetailsStyles.form}>
+              <Form>
                 {/* Qty */}
-                <div className={ProductDetailsStyles.qty}>
-                  <i
-                    className={`${ProductDetailsStyles.minus} mdi mdi-minus`}
-                    onClick={() => {
-                      if (qty > 1) {
-                        setQty(qty - 1);
-                      }
-                    }}
-                  ></i>
-                  <input
-                    readOnly
-                    type='number'
-                    value={qty}
-                    className={ProductDetailsStyles.input}
-                  />
-                  <i
-                    className={`${ProductDetailsStyles.plus} mdi mdi-plus`}
-                    onClick={() => setQty(qty + 1)}
-                  ></i>
-                </div>
+                <QtyInput
+                  value={qty}
+                  onPlus={() => setQty(qty + 1)}
+                  onMinus={() => {
+                    if (qty > 1) {
+                      setQty(qty - 1);
+                    }
+                  }}
+                />
 
                 {/* Show Note */}
                 {!showNote && (
