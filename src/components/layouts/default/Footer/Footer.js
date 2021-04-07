@@ -39,7 +39,7 @@ const Footer = () => {
       <Container>
         <Row className='text-white d-flex justify-content-center'>
           <Col xs='12' md='4'>
-            <h3 className={FooterStyles.title}>About</h3>
+            <h4 className={FooterStyles.title}>About Us</h4>
 
             <p>
               Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -49,7 +49,7 @@ const Footer = () => {
           </Col>
 
           <Col xs='12' md='4'>
-            <h3 className={FooterStyles.title}>Socials</h3>
+            <h4 className={FooterStyles.title}>Socials</h4>
 
             <p className='d-flex'>
               {socials.map((social) => (
@@ -65,7 +65,7 @@ const Footer = () => {
           </Col>
 
           <Col xs='12' md='4'>
-            <h3 className={FooterStyles.title}>CONTACT</h3>
+            <h4 className={FooterStyles.title}>CONTACTS</h4>
 
             <ul className={FooterStyles.list}>
               {contacts.map((contact) => (
