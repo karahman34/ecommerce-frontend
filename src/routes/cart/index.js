@@ -1,10 +1,10 @@
 import IndexPage from "pages/cart/Index";
 
-export const prefix = "/carts";
+export const prefix = "/cart";
 
 const cartIndexRoutes = [
   {
-    path: "/",
+    path: prefix,
     title: "Cart",
     middleware: "auth",
     component: IndexPage,
