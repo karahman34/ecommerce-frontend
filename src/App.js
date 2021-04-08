@@ -7,6 +7,7 @@ import routes from "routes";
 
 import Layout from "components/main/Layout";
 import RouterGuard from "components/main/RouterGuard";
+import InitialLoader from "components/main/InitialLoader/InitialLoader";
 import { setDocumentTitle } from "helpers/routeHelper";
 
 const mapDispatchToProps = (dispatch) => ({
@@ -47,7 +48,7 @@ function App({ fetchUser, fetchPopularCategories, setLoggedIn }) {
   }, [fetchUser, fetchPopularCategories, setLoggedIn]);
 
   if (tasks.length) {
-    return <p>Loading...</p>;
+    return <InitialLoader />;
   }
 
   return (
