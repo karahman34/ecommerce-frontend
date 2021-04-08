@@ -1,6 +1,7 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { connect } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 import DefaultLayoutStyles from "components/layouts/default/DefaultLayout.module.scss";
 import Alert from "components/Alert/Alert";
 import CartList from "components/cart/List/List";
@@ -12,9 +13,12 @@ import MakeOrderSkeleton from "components/order/MakeOrderSkeleton/MakeOrderSkele
 
 const mapStateToProps = (state) => ({
   cartItems: state.cart.items,
+  user: state.auth.user,
 });
 
-const Index = ({ cartItems }) => {
+const Index = ({ cartItems, user }) => {
+  const history = useHistory();
+
   const [showEdit, setShowEdit] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
   const [focusCart, setFocusCart] = useState(null);
@@ -23,6 +27,16 @@ const Index = ({ cartItems }) => {
     variant: null,
     message: null,
   });
+
+  const profileComplete = useMemo(() => {
+    const { telephone, address } = user.profile;
+
+    if (!telephone || !address) {
+      return false;
+    }
+
+    return true;
+  }, [user]);
 
   const onEdit = useCallback((cart) => {
     setShowEdit(true);
@@ -70,6 +84,20 @@ const Index = ({ cartItems }) => {
             </Alert>
           )}
 
+          {/* Alert - non complete profile */}
+          {!profileComplete && (
+            <Alert variant='warning'>
+              Before you continue please complete your profile first.
+              <span
+                className='ml-1 font-weight-bold'
+                style={{ cursor: "pointer" }}
+                onClick={(e) => history.push("/profile")}
+              >
+                Complete profile
+              </span>
+            </Alert>
+          )}
+
           {/* Normal Alert */}
           {alert.variant && alert.message && (
             <Alert variant={alert.variant}>{alert.message}</Alert>
@@ -81,7 +109,7 @@ const Index = ({ cartItems }) => {
 
         <Col lg={3} className='mt-3 mt-lg-0'>
           {/* Send To */}
-          <SendTo />
+          {profileComplete && <SendTo />}
 
           {/* Divider */}
           <div className='mb-3'></div>
