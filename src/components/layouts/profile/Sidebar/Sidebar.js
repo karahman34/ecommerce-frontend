@@ -12,7 +12,7 @@ const Sidebar = () => {
       text: "Profile",
     },
     {
-      path: "/password",
+      path: "/profile/password",
       icon: "lock",
       text: "Password",
     },

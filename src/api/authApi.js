@@ -21,6 +21,12 @@ const authApi = {
   resetPassword(payload) {
     return httpBase.post("reset-password", payload);
   },
+  changePassword(payload) {
+    return httpBase.post("user/password", {
+      ...payload,
+      _method: "PUT",
+    });
+  },
   me() {
     return http.get(`${prefix}/me`);
   },
