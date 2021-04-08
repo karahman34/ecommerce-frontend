@@ -22,11 +22,9 @@ const SearchBox = ({ onSearch }) => {
         placeholder='Enter a keyword..'
         onChange={(e) => setSearch(e.target.value)}
       />
-      <span className={SearchBoxStyles.magnify}>
+      <button type='submit' className={SearchBoxStyles.magnify}>
         <i className='mdi mdi-magnify'></i>
-      </span>
-
-      <input type='submit' className='d-none' />
+      </button>
     </form>
   );
 };
