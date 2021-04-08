@@ -6,12 +6,14 @@ import { Button, Card, Form } from "react-bootstrap";
 import { getValidationErrorsObject } from "helpers/formHelper";
 import Alert from "components/Alert/Alert";
 import AuthLayoutStyles from "components/layouts/auth/AuthLayout.module.scss";
+import { fetchUserCarts } from "store/modules/cart/actions";
 
 const mapDispatchToProps = (dispatch) => ({
   goLogin: (payload) => dispatch(authenthicate(payload)),
+  fetchUserCartItems: () => dispatch(fetchUserCarts()),
 });
 
-const Index = ({ goLogin }) => {
+const Index = ({ goLogin, fetchUserCartItems }) => {
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -52,6 +54,8 @@ const Index = ({ goLogin }) => {
 
       if (params.has("origin")) {
         window.location.href = decodeURI(params.get("origin"));
+      } else {
+        fetchUserCartItems(fetchUserCartItems);
       }
     } catch (err) {
       const errCode = err?.response?.status;

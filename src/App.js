@@ -9,43 +9,60 @@ import Layout from "components/main/Layout";
 import RouterGuard from "components/main/RouterGuard";
 import InitialLoader from "components/main/InitialLoader/InitialLoader";
 import { setDocumentTitle } from "helpers/routeHelper";
+import { fetchUserCarts } from "store/modules/cart/actions";
 
 const mapDispatchToProps = (dispatch) => ({
   fetchUser: () => dispatch(getMe()),
+  fetchUserCarts: () => dispatch(fetchUserCarts()),
   fetchPopularCategories: (params) => dispatch(fetchPopularCategories(params)),
   setLoggedIn: (value) => dispatch(setLoggedIn(value)),
 });
 
 setDocumentTitle();
 
-function App({ fetchUser, fetchPopularCategories, setLoggedIn }) {
-  const [tasks, setTasks] = useState(["fetchUser", "fetchPopularCategories"]);
+function App({
+  fetchUser,
+  fetchUserCarts,
+  fetchPopularCategories,
+  setLoggedIn,
+}) {
+  const [tasks, setTasks] = useState([
+    "fetchUser",
+    "fetchUserCarts",
+    "fetchPopularCategories",
+  ]);
+
+  function removeTask(key) {
+    setTasks((prev) => {
+      const newTasks = [...prev];
+      newTasks.splice(newTasks.indexOf(key), 1);
+
+      return newTasks;
+    });
+  }
 
   // Fedding the store.
   useEffect(() => {
+    // Fetch current user.
     fetchUser()
-      .then(() => setLoggedIn(true))
-      .catch(setLoggedIn(false))
-      .finally(() =>
-        setTasks((prev) => {
-          const newTasks = [...prev];
-          newTasks.splice(newTasks.indexOf("fetchUser"), 1);
+      .then(() => {
+        setLoggedIn(true);
 
-          return newTasks;
-        })
-      );
+        fetchUserCarts()
+          .catch(() => alert("Failed to load user cart items."))
+          .finally(() => removeTask("fetchUserCarts"));
+      })
+      .catch(() => {
+        setLoggedIn(false);
+        removeTask("fetchUserCarts");
+      })
+      .finally(() => removeTask("fetchUser"));
 
+    // Fetch popular categories.
     fetchPopularCategories()
       .catch(() => alert("Failed to fetch popular categories."))
-      .finally(() =>
-        setTasks((prev) => {
-          const newTasks = [...prev];
-          newTasks.splice(newTasks.indexOf("fetchPopularCategories"), 1);
-
-          return newTasks;
-        })
-      );
-  }, [fetchUser, fetchPopularCategories, setLoggedIn]);
+      .finally(() => removeTask("fetchPopularCategories"));
+  }, [fetchUser, fetchUserCarts, fetchPopularCategories, setLoggedIn]);
 
   if (tasks.length) {
     return <InitialLoader />;

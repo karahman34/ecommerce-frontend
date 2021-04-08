@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useMemo } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "store/modules/auth/actions";
@@ -12,7 +12,6 @@ import {
 } from "react-bootstrap";
 import TopNavStyles from "./TopNav.module.scss";
 import SearchBox from "../SearchBox/SearchBox";
-import { fetchUserCarts } from "store/modules/cart/actions";
 
 const mapStateToProps = (state) => ({
   loggedIn: state.auth.loggedIn,
@@ -22,16 +21,9 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   logoutUser: () => dispatch(logout()),
-  fetchUserCarts: () => dispatch(fetchUserCarts()),
 });
 
-const TopNav = ({
-  carts,
-  fetchUserCarts,
-  loggedIn,
-  currentUser,
-  logoutUser,
-}) => {
+const TopNav = ({ carts, loggedIn, currentUser, logoutUser }) => {
   const appTitle = process.env.REACT_APP_TITLE;
 
   function onSearch(search) {
@@ -45,13 +37,6 @@ const TopNav = ({
       alert("Failed to logout user.");
     }
   }
-
-  // Mounted
-  useEffect(() => {
-    if (loggedIn) {
-      fetchUserCarts().catch(() => alert("Failed to fetch user carts."));
-    }
-  }, [fetchUserCarts, loggedIn]);
 
   const firstName = useMemo(() => {
     return !currentUser ? null : currentUser.name.split(" ")[0];
