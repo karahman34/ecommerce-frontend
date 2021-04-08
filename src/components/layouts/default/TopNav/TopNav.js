@@ -126,7 +126,7 @@ const TopNav = ({
                     </>
                   }
                 >
-                  <NavDropdown.Item as={Link} to='#'>
+                  <NavDropdown.Item as={Link} to='/profile'>
                     Profile
                   </NavDropdown.Item>
 

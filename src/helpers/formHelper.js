@@ -19,3 +19,38 @@ export function getValidationErrorsObject(err) {
 export function getErrorCode(err) {
   return err?.response?.status;
 }
+
+export function setField(key, input, setForm, setErrors) {
+  setForm((prevFields) => ({
+    ...prevFields,
+    [key]: input,
+  }));
+
+  setErrors((prevErrors) => {
+    if (prevErrors[key] !== null) {
+      return {
+        ...prevErrors,
+        [key]: null,
+      };
+    }
+
+    return prevErrors;
+  });
+}
+
+export function setValidationErrors(err, setErrors) {
+  const errors = getValidationErrorsObject(err);
+  const errorKeys = Object.keys(errors);
+
+  setErrors((prevErrors) => {
+    const newErrors = {};
+
+    for (const key in prevErrors) {
+      if (Object.hasOwnProperty.call(prevErrors, key)) {
+        newErrors[key] = errorKeys.includes(key) ? errors[key] : null;
+      }
+    }
+
+    return newErrors;
+  });
+}

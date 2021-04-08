@@ -1,4 +1,5 @@
 import authApi from "api/authApi";
+import profileApi from "api/profileApi";
 import { SET_USER, SET_LOGGED_IN } from "./actionTypes";
 
 export const setUser = (user) => ({
@@ -60,6 +61,21 @@ export function getMe() {
   return async (dispatch) => {
     try {
       const res = await authApi.me();
+      const { data } = res.data;
+
+      dispatch(setUser(data));
+
+      return Promise.resolve(res);
+    } catch (err) {
+      return Promise.reject(err);
+    }
+  };
+}
+
+export function updateUserInfo(payload) {
+  return async (dispatch) => {
+    try {
+      const res = await profileApi.update(payload);
       const { data } = res.data;
 
       dispatch(setUser(data));

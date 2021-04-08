@@ -1,0 +1,11 @@
+@import "/src/assets/scss/variables";
+
+.profileLayout {
+  width: 100%;
+  min-height: 100vh;
+  background-color: $bg-color;
+
+  .navBlock {
+    z-index: 100;
+  }
+}

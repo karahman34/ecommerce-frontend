@@ -6,6 +6,7 @@ import LoginPage from "pages/login/Index";
 import RegisterPage from "pages/register/Index";
 import ResetPasswordPage from "pages/reset-password/Index";
 import ForgotPasswordPage from "pages/forgot-password/Index";
+import profileIndexRoutes from "./profile";
 
 const routes = [
   {
@@ -47,6 +48,7 @@ const routes = [
   },
   ...ProductsRoutes,
   ...cartIndexRoutes,
+  ...profileIndexRoutes,
 ];
 
 export default routes;
