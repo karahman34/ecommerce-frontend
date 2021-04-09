@@ -97,9 +97,15 @@ const RouterGuard = ({
     if (!tasks.length) {
       setDocumentTitle(title);
 
-      window.scrollTo({ top: 0 });
+      const currentPathName = history.location.pathname;
+
+      return () => {
+        if (currentPathName !== history.location.pathname) {
+          window.scrollTo({ top: 0 });
+        }
+      };
     }
-  }, [tasks, title]);
+  }, [tasks, title, history]);
 
   return !tasks.length ? children : null;
 };
