@@ -42,7 +42,7 @@ const NewProducts = () => {
   return (
     <Container className='mt-3 mb-1'>
       {/* Title */}
-      <FeedTitle to='#' title='New Products' />
+      <FeedTitle to='/browse' title='New Products' />
 
       <Row>
         {/* Skeleton */}

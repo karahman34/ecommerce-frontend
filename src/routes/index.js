@@ -1,12 +1,13 @@
 import ProductsRoutes from "./products/index";
 import cartIndexRoutes from "./cart";
+import profileIndexRoutes from "./profile";
 
 import IndexPage from "pages/Index";
 import LoginPage from "pages/login/Index";
 import RegisterPage from "pages/register/Index";
 import ResetPasswordPage from "pages/reset-password/Index";
 import ForgotPasswordPage from "pages/forgot-password/Index";
-import profileIndexRoutes from "./profile";
+import BrowsePage from "pages/browse/Index";
 
 const routes = [
   {
@@ -45,6 +46,11 @@ const routes = [
     title: "Reset Password",
     middleware: "guest",
     component: ResetPasswordPage,
+  },
+  {
+    path: "/browse",
+    exact: false,
+    component: BrowsePage,
   },
   ...ProductsRoutes,
   ...cartIndexRoutes,

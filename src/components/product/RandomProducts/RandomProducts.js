@@ -28,7 +28,10 @@ const RandomProducts = () => {
 
   return (
     <Container>
-      <FeedTitle to='#' title='Random Products' />
+      <FeedTitle
+        to={{ pathname: "/browse", search: "?filter=random" }}
+        title='Random Products'
+      />
 
       <Row>
         {loading &&

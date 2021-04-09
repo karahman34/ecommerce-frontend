@@ -21,7 +21,7 @@ const FeedTitle = ({ title, to }) => {
 };
 
 FeedTitle.propTypes = {
-  to: PropTypes.string,
+  to: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   title: PropTypes.string.isRequired,
 };
 

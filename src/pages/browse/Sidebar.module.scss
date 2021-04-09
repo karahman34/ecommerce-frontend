@@ -1,0 +1,16 @@
+.sidebar {
+  @media screen and (min-width: 992px) {
+    position: sticky;
+    top: 127px;
+  }
+
+  .listCategory {
+    .listCategoryItem {
+      cursor: pointer;
+
+      &:hover {
+        background-color: lightgray !important;
+      }
+    }
+  }
+}

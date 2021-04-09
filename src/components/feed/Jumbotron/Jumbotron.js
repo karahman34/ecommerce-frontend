@@ -1,6 +1,7 @@
 import React from "react";
 import JumbotronStyles from "./Jumbotron.module.scss";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Jumbotron = () => {
   return (
@@ -10,10 +11,12 @@ const Jumbotron = () => {
         <h5>We provide a high level products with quality</h5>
         <h5> and friendly price.</h5>
 
-        <Button className={JumbotronStyles.btn}>
-          <i className='mdi mdi-cart mr-2'></i>
-          <span>Shop Now</span>
-        </Button>
+        <Link to='/browse'>
+          <Button className={JumbotronStyles.btn}>
+            <i className='mdi mdi-cart mr-2'></i>
+            <span>Shop Now</span>
+          </Button>
+        </Link>
       </div>
     </div>
   );

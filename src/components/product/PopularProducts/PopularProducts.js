@@ -28,7 +28,10 @@ const PopularProducts = () => {
 
   return (
     <Container>
-      <FeedTitle to='#' title='Popular Products' />
+      <FeedTitle
+        to={{ pathname: "/browse", search: "?filter=popular" }}
+        title='Popular Products'
+      />
 
       <Row>
         {loading &&

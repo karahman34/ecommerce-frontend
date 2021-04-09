@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { logout } from "store/modules/auth/actions";
 import {
   Badge,
@@ -24,10 +24,14 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const TopNav = ({ carts, loggedIn, currentUser, logoutUser }) => {
+  const history = useHistory();
   const appTitle = process.env.REACT_APP_TITLE;
 
   function onSearch(search) {
-    alert(search);
+    history.push({
+      pathname: "/browse",
+      search: `?q=${search}`,
+    });
   }
 
   async function logoutHandler() {
