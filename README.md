@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Api
+
+https://github.com/karahman34/ecommerce-api-and-admin
+
 ## Available Scripts
 
 In the project directory, you can run:
