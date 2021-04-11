@@ -1,5 +1,7 @@
+import { mergeChildRoutes } from "helpers/routeHelper";
 import IndexPage from "pages/profile/Index";
 import PasswordIndexPage from "pages/profile/password/Index";
+import transactionsIndexRoutes from "./transactions";
 
 export const prefix = "/profile";
 
@@ -19,6 +21,7 @@ const profileIndexRoutes = [
     middleware: "auth",
     component: PasswordIndexPage,
   },
+  ...mergeChildRoutes(prefix, transactionsIndexRoutes),
 ];
 
 export default profileIndexRoutes;

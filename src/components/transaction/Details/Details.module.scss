@@ -1,0 +1,15 @@
+.details {
+  overflow-x: auto;
+
+  .header {
+    display: flex;
+    flex-wrap: 1;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .productThumbnail {
+    width: 100%;
+    max-width: 250px;
+  }
+}

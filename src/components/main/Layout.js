@@ -13,6 +13,7 @@ const Layout = ({ currentLayout, children }) => {
     <>
       {
         {
+          none: children,
           auth: <AuthLayout>{children}</AuthLayout>,
           default: <DefaultLayout>{children}</DefaultLayout>,
           profile: <ProfileLayout>{children}</ProfileLayout>,

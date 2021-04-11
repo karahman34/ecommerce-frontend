@@ -1,0 +1,31 @@
+.transactionPrintPage {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .container {
+    max-width: 550px;
+    margin: 0 auto;
+  }
+
+  .line {
+    display: block;
+    height: 4px;
+    width: 100%;
+    background-color: black;
+    margin: 0.3rem 0;
+  }
+
+  .table {
+    width: 100%;
+  }
+
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

@@ -16,6 +16,11 @@ const Sidebar = () => {
       icon: "lock",
       text: "Password",
     },
+    {
+      path: "/profile/transactions",
+      icon: "truck",
+      text: "Transactions",
+    },
   ]);
   const [activeKey, setActiveKey] = useState("-1");
 
