@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import PopularCategoriesStyles from "./PopularCategories.module.scss";
 
 const mapStateToProps = (state) => ({
@@ -33,7 +34,11 @@ const PopularCategories = ({ categories }) => {
             {categories.map((category) => (
               <Nav.Link
                 key={category.id}
-                href='#'
+                as={Link}
+                to={{
+                  pathname: "/browse",
+                  search: `?category=${category.name}`,
+                }}
                 className={PopularCategoriesStyles.link}
               >
                 <Button
