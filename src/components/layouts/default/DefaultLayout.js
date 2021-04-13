@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import DefaultLayoutStyles from "./DefaultLayout.module.scss";
 import TopNav from "./TopNav/TopNav";
 import Footer from "./Footer/Footer";
 import PopularCategories from "./PopularCategories/PopularCategories";
+import { useLocation } from "react-router-dom";
 
 const DefaultLayout = ({ children }) => {
+  const location = useLocation();
+
   const [showNavShadow, setShowNavShadow] = useState(false);
   const scrollHandler = (e) => {
     if (window.scrollY > 0) {
@@ -13,6 +16,16 @@ const DefaultLayout = ({ children }) => {
       setShowNavShadow(false);
     }
   };
+
+  const showCategoriesNav = useMemo(() => {
+    const blackList = ["/browse"];
+
+    if (blackList.includes(location.pathname)) {
+      return false;
+    }
+
+    return true;
+  }, [location.pathname]);
 
   // Listen scroll event.
   window.addEventListener("scroll", scrollHandler);
@@ -29,7 +42,7 @@ const DefaultLayout = ({ children }) => {
       >
         <TopNav />
 
-        <PopularCategories />
+        {showCategoriesNav && <PopularCategories />}
       </div>
 
       <main>{children}</main>
