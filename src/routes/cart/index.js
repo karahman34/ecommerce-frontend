@@ -5,8 +5,10 @@ export const prefix = "/cart";
 const cartIndexRoutes = [
   {
     path: prefix,
-    title: "Cart",
-    middleware: "auth",
+    meta: {
+      title: "Cart",
+      middleware: "auth",
+    },
     component: IndexPage,
   },
 ];

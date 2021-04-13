@@ -9,16 +9,20 @@ const profileIndexRoutes = [
   {
     path: prefix,
     exact: true,
-    title: "Profile",
-    layout: "profile",
-    middleware: "auth",
+    meta: {
+      title: "Profile",
+      layout: "profile",
+      middleware: "auth",
+    },
     component: IndexPage,
   },
   {
     path: `${prefix}/password`,
-    title: "Password",
-    layout: "profile",
-    middleware: "auth",
+    meta: {
+      title: "Password",
+      layout: "profile",
+      middleware: "auth",
+    },
     component: PasswordIndexPage,
   },
   ...mergeChildRoutes(prefix, transactionsIndexRoutes),

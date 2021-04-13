@@ -75,12 +75,8 @@ function App({
           <Switch>
             {routes.map((route, i) => (
               <Route key={i} path={route.path} exact={route.exact}>
-                <RouterGuard
-                  title={route.title}
-                  layout={route.layout || "default"}
-                  middleware={route.middleware}
-                >
-                  <route.component></route.component>
+                <RouterGuard meta={route.meta}>
+                  <route.component routeMeta={route.meta}></route.component>
                 </RouterGuard>
               </Route>
             ))}

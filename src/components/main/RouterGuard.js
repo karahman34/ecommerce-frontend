@@ -26,15 +26,22 @@ const RouterGuard = ({
   children,
   currentLayout,
   changeCurrentLayout,
-  layout,
-  middleware,
-  title,
   state,
+  meta,
 }) => {
   const [tasks, setTasks] = useState(["applyMiddleware"]);
   const history = useHistory();
   const params = useParams();
   const location = useLocation();
+
+  const removeTask = (taskName) => {
+    setTasks((prevTasks) => {
+      const newTasks = [...prevTasks];
+      newTasks.splice(newTasks.indexOf(taskName), 1);
+
+      return newTasks;
+    });
+  };
 
   const applyMiddleware = useCallback((context, ...listMiddleware) => {
     const name = listMiddleware.shift();
@@ -49,12 +56,7 @@ const RouterGuard = ({
         return applyMiddleware(context, listMiddleware);
       }
 
-      setTasks((prevTasks) => {
-        const newTasks = [...prevTasks];
-        newTasks.splice(newTasks.indexOf("applyMiddleware"), 1);
-
-        return newTasks;
-      });
+      removeTask("applyMiddleware");
     };
 
     // Run middleware.
@@ -66,6 +68,8 @@ const RouterGuard = ({
 
   // Apply middleware.
   useEffect(() => {
+    const { middleware } = meta;
+
     if (middleware) {
       const context = {
         location,
@@ -76,24 +80,24 @@ const RouterGuard = ({
 
       applyMiddleware(context, middleware);
     } else {
-      setTasks((prevTasks) => {
-        const newTasks = [...prevTasks];
-        newTasks.splice(newTasks.indexOf("applyMiddleware"), 1);
-
-        return newTasks;
-      });
+      removeTask("applyMiddleware");
     }
-  }, [location, state, params, history, middleware, applyMiddleware]);
+  }, [location, state, params, history, meta, applyMiddleware]);
 
   // Set route layout.
   useEffect(() => {
+    const { layout } = meta;
+    const defaultLayout = "default";
+
     if (currentLayout !== layout) {
-      changeCurrentLayout(layout);
+      changeCurrentLayout(layout || defaultLayout);
     }
-  }, [layout, currentLayout, changeCurrentLayout]);
+  }, [meta, currentLayout, changeCurrentLayout]);
 
   // Set route title.
   useEffect(() => {
+    const { title } = meta;
+
     if (!tasks.length) {
       setDocumentTitle(title);
 
@@ -105,15 +109,17 @@ const RouterGuard = ({
         }
       };
     }
-  }, [tasks, title, history]);
+  }, [tasks, meta, history]);
 
   return !tasks.length ? children : null;
 };
 
+RouterGuard.defaultProps = {
+  meta: {},
+};
+
 RouterGuard.propTypes = {
-  title: PropTypes.string,
-  layout: PropTypes.string.isRequired,
-  middleware: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  meta: PropTypes.object,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RouterGuard);
