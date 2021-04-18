@@ -7,16 +7,20 @@ const transactionsIndexRoutes = [
   {
     exact: true,
     path: `${prefix}`,
-    title: "Transactions",
-    layout: "profile",
-    middleware: "auth",
+    meta: {
+      title: "Transactions",
+      layout: "profile",
+      middleware: "auth",
+    },
     component: TransactionsIndexPage,
   },
   {
     path: `${prefix}/:transactionId/print`,
-    title: "Transactions",
-    layout: "none",
-    middleware: "auth",
+    meta: {
+      title: "Transactions",
+      layout: "none",
+      middleware: "auth",
+    },
     component: PrintTransactionPage,
   },
 ];
