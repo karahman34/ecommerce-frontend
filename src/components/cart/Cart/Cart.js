@@ -45,7 +45,7 @@ const Cart = ({ className, cart, onEdit, onDelete }) => {
         {/* Name & Menu Dropdown */}
         <div className='d-flex justify-content-between align-items-center'>
           {/* Name */}
-          <Link to={`/products/${cart.product.id}`}>
+          <Link to={`/products/${cart.product.id}`} className='text-dark'>
             <h5 className='text-capitalize my-0'>{cart.product.name}</h5>
           </Link>
 
