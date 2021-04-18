@@ -4,6 +4,7 @@ import FooterStyles from "./Footer.module.scss";
 import { Container, Jumbotron, Row, Col } from "react-bootstrap";
 
 const Footer = () => {
+  const [appName] = useState(process.env.REACT_APP_TITLE);
   const [contacts] = useState([
     {
       icon: "mdi-phone",
@@ -39,7 +40,7 @@ const Footer = () => {
       <Container>
         <Row className='text-white d-flex justify-content-center'>
           <Col xs='12' md='4'>
-            <h4 className={FooterStyles.title}>About Us</h4>
+            <h3 className={`${FooterStyles.title} ${FooterStyles.appName}`}>{appName}</h3>
 
             <p>
               Lorem Ipsum is simply dummy text of the printing and typesetting
