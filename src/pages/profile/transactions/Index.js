@@ -11,6 +11,7 @@ const Index = () => {
   const [transactions, setTransactions] = useState([]);
   const [totalItems, setTotalItems] = useState(null);
   const [perPage] = useState(10);
+  const [lastPage, setLastPage] = useState(null);
   const [params, setParams] = useState({
     limit: perPage,
     order: "desc",
@@ -35,6 +36,7 @@ const Index = () => {
 
       setTotalItems(meta.total);
       setTransactions((prev) => [...prev, ...data]);
+      setLastPage(meta.last_page);
     } catch (err) {
       setAlert({
         variant: "danger",
@@ -104,23 +106,26 @@ const Index = () => {
           />
 
           {/* Pagination */}
-          {!loading && transactions.length > 0 && (
-            <div className='d-flex justify-content-center'>
-              <Pagination
-                active={params.page}
-                total={totalItems}
-                perPage={perPage}
-                onChange={(page) => {
-                  if (page !== params.page) {
-                    setParams((prevParams) => ({
-                      ...prevParams,
-                      page,
-                    }));
-                  }
-                }}
-              />
-            </div>
-          )}
+          {!loading &&
+            transactions.length > 0 &&
+            lastPage !== null &&
+            lastPage > 1 && (
+              <div className='d-flex justify-content-center'>
+                <Pagination
+                  active={params.page}
+                  total={totalItems}
+                  perPage={perPage}
+                  onChange={(page) => {
+                    if (page !== params.page) {
+                      setParams((prevParams) => ({
+                        ...prevParams,
+                        page,
+                      }));
+                    }
+                  }}
+                />
+              </div>
+            )}
         </Card.Body>
       </Card>
     </div>
