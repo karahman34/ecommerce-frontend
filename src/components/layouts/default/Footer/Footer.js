@@ -49,6 +49,19 @@ const Footer = () => {
           </Col>
 
           <Col xs='12' md='4'>
+            <h4 className={FooterStyles.title}>CONTACTS</h4>
+
+            <ul className={FooterStyles.list}>
+              {contacts.map((contact) => (
+                <li key={contact.value} className={FooterStyles.listItem}>
+                  <i className={`mdi ${contact.icon}`}></i>
+                  <span>{contact.value}</span>
+                </li>
+              ))}
+            </ul>
+          </Col>
+
+          <Col xs='12' md='4'>
             <h4 className={FooterStyles.title}>Socials</h4>
 
             <p className='d-flex'>
@@ -62,19 +75,6 @@ const Footer = () => {
                 </Link>
               ))}
             </p>
-          </Col>
-
-          <Col xs='12' md='4'>
-            <h4 className={FooterStyles.title}>CONTACTS</h4>
-
-            <ul className={FooterStyles.list}>
-              {contacts.map((contact) => (
-                <li key={contact.value} className={FooterStyles.listItem}>
-                  <i className={`mdi ${contact.icon}`}></i>
-                  <span>{contact.value}</span>
-                </li>
-              ))}
-            </ul>
           </Col>
         </Row>
       </Container>
