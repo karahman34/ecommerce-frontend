@@ -34,6 +34,11 @@
     right: 0;
   }
 
+  .disabled {
+    background-color: rgb(194, 194, 194) !important;
+    cursor: not-allowed;
+  }
+
   .input {
     outline: none;
     border: none;

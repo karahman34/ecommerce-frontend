@@ -64,6 +64,7 @@ const EditModal = ({ cart, onHide, updateCartItem }) => {
           <Form.Group>
             <Form.Label>Qty</Form.Label>
             <QtyInput
+              stock={cart.product.stock}
               value={form.qty}
               onPlus={() =>
                 setForm({

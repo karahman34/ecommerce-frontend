@@ -149,6 +149,12 @@ const ProductDetails = ({
                 {formatToRupiah(product.price)}
               </Card.Title>
 
+              {/* Stock */}
+              <div>
+                <span>Stock: </span>
+                <span>{product.stock}</span>
+              </div>
+
               {/* Kategori */}
               <div>
                 <span>Category: </span>
@@ -172,6 +178,7 @@ const ProductDetails = ({
                 {/* Qty */}
                 <QtyInput
                   value={qty}
+                  stock={product.stock}
                   onPlus={() => setQty(qty + 1)}
                   onMinus={() => {
                     if (qty > 1) {
