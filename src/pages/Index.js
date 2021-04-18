@@ -1,9 +1,7 @@
 import React from "react";
 import Categories from "components/feed/Categories/Categories";
 import Jumbotron from "components/feed/Jumbotron/Jumbotron";
-import NewProducts from "components/product/NewProducts/NewProducts";
-import PopularProducts from "components/product/PopularProducts/PopularProducts";
-import RandomProducts from "components/product/RandomProducts/RandomProducts";
+import ListProducts from "components/product/List/List";
 
 const Index = () => {
   return (
@@ -12,7 +10,7 @@ const Index = () => {
       <Jumbotron />
 
       {/* New Products */}
-      <NewProducts />
+      <ListProducts to='/browse' title='New Products' filter='new' />
 
       {/* Categories */}
       <Categories />
@@ -21,13 +19,21 @@ const Index = () => {
       <div className='mt-3'></div>
 
       {/* Popular Products */}
-      <PopularProducts />
+      <ListProducts
+        to={{ pathname: "/browse", search: "?filter=popular" }}
+        title='Popular Products'
+        filter='popular'
+      />
 
       {/* Divider */}
       <div className='my-3'></div>
 
       {/* Random Products */}
-      <RandomProducts />
+      <ListProducts
+        to={{ pathname: "/browse", search: "?filter=random" }}
+        title='Random Products'
+        filter='random'
+      />
 
       {/* Divider */}
       <div className='mb-3'></div>

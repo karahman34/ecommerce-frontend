@@ -1,19 +1,20 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import PropTypes from "prop-types";
 import productApi from "api/productApi";
 import { Container, Row, Col } from "react-bootstrap";
 import FeedTitle from "components/feed/FeedTitle/FeedTitle";
 import ProductFeed from "components/product/ProductFeed/ProductFeed";
 import ProductFeedSkeleton from "components/product/ProductFeedSkeleton/ProductFeedSkeleton";
 
-const NewProducts = () => {
+const List = ({ title, to, filter }) => {
   const [products, setProducts] = useState(null);
   const [fetchProductsLoading, setFetchProductsLoading] = useState(true);
 
-  async function fetchProducts() {
+  const fetchProducts = useCallback(async () => {
     try {
       const res = await productApi.all({
         limit: 8,
-        filter: "new",
+        filter,
       });
       const { data } = res.data;
 
@@ -23,12 +24,12 @@ const NewProducts = () => {
     } finally {
       setFetchProductsLoading(false);
     }
-  }
+  }, [filter]);
 
   // Mounted.
   useEffect(() => {
     fetchProducts();
-  }, []);
+  }, [fetchProducts]);
 
   const SkeletonTotal = useMemo(() => {
     const arr = [];
@@ -42,7 +43,7 @@ const NewProducts = () => {
   return (
     <Container className='mt-3 mb-1'>
       {/* Title */}
-      <FeedTitle to='/browse' title='New Products' />
+      <FeedTitle to={to} title={title} />
 
       <Row>
         {/* Skeleton */}
@@ -65,4 +66,14 @@ const NewProducts = () => {
   );
 };
 
-export default NewProducts;
+List.defaultProps = {
+  filter: null,
+};
+
+List.propTypes = {
+  to: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  title: PropTypes.string.isRequired,
+  filter: PropTypes.string,
+};
+
+export default List;

@@ -36,16 +36,9 @@ const Index = () => {
   const fetchProducts = useCallback(async () => {
     setLoading(true);
 
-    const api = {
-      new: productApi.all,
-      popular: productApi.popular,
-      random: productApi.random,
-    };
-
     try {
-      const res = await api[params.filter]({
+      const res = await productApi.all({
         ...params,
-        filter: null,
         limit: 9,
       });
       const { data, links } = res.data;
