@@ -34,7 +34,7 @@ const Sidebar = () => {
     <Accordion activeKey={activeKey}>
       <Card className={`border-0 shadow-sm`}>
         <Card.Body className='px-0 py-0'>
-          <Card.Title className='px-3 py-3 mb-0 d-flex justify-content-between align-content-center'>
+          <Card.Title className='px-3 pt-3 pb-2 mb-0 d-flex justify-content-between align-content-center'>
             Menus
             <i
               className={`mdi mdi-chevron-${
