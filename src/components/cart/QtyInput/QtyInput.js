@@ -27,7 +27,11 @@ const QtyInput = ({ stock, value, onPlus, onMinus }) => {
         className={`${QtyInputStyles.plus} mdi mdi-plus ${
           disablePlus ? QtyInputStyles.disabled : null
         }`}
-        onClick={onPlus}
+        onClick={(e) => {
+          if (!disablePlus) {
+            onPlus(e);
+          }
+        }}
       ></i>
     </div>
   );
