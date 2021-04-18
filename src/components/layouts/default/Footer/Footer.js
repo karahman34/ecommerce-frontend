@@ -40,7 +40,9 @@ const Footer = () => {
       <Container>
         <Row className='text-white d-flex justify-content-center'>
           <Col xs='12' md='4'>
-            <h3 className={`${FooterStyles.title} ${FooterStyles.appName}`}>{appName}</h3>
+            <h3 className={`${FooterStyles.title} ${FooterStyles.appName}`}>
+              {appName}
+            </h3>
 
             <p>
               Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -65,7 +67,7 @@ const Footer = () => {
           <Col xs='12' md='4'>
             <h4 className={FooterStyles.title}>Socials</h4>
 
-            <p className='d-flex'>
+            <div className='d-flex'>
               {socials.map((social) => (
                 <Link
                   to={social.link}
@@ -75,7 +77,7 @@ const Footer = () => {
                   <i className={`mdi ${social.icon}`}></i>
                 </Link>
               ))}
-            </p>
+            </div>
           </Col>
         </Row>
       </Container>
